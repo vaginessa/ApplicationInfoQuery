@@ -1,0 +1,14 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">"应用信息查询"</string>
+    <string name="all_application_info">"所有应用信息"</string>
+    <string name="system_application_info">"系统应用信息"</string>
+    <string name="non_system_application_info">"非系统应用信息"</string>
+    <string name="activity_query">"Activity查询"</string>
+    <string name="service_query">"Service查询"</string>
+    <string name="broadcast_query">"Broadcast查询"</string>
+    <string name="displays_real_time_info">"显示实时信息"</string>
+    <string name="turn_off_real_time_info">"关闭实时信息"</string>
+    <string name="top_application_name">"应用名称："<xliff:g id="name">%s</xliff:g></string>
+    <string name="top_application_packagename">"包名："<xliff:g id="name">%s</xliff:g></string>
+    <string name="top_application_classname">"类名："<xliff:g id="name">%s</xliff:g></string>
+</resources>

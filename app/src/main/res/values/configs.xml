@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 实时显示当前Activity信息更新时间间隔，单位：秒    -->
+    <integer name="real_time_display_refresh_time">3</integer>
+
+</resources>
