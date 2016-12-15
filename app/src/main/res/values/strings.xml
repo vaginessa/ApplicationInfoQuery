@@ -11,4 +11,7 @@
     <string name="top_application_name">"应用名称："<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_packagename">"包名："<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_classname">"类名："<xliff:g id="name">%s</xliff:g></string>
+    <string name="all_application_title">"所有应用"</string>
+    <string name="system_application_title">"系统应用"</string>
+    <string name="non_system_application_title">"非系统应用"</string>
 </resources>

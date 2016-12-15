@@ -148,7 +148,6 @@ public class RealTimeDisplayService extends Service {
             info.append(getString(R.string.top_application_classname, cn.getClassName()));
         }
         Log.d(this, "getTopActivityInfo=>info: " + info.toString());
-        Log.d(this, "getTopActivityInfo=>packageName: " + getTopActivityInfo());
         return info.toString();
     }
 
@@ -164,24 +163,6 @@ public class RealTimeDisplayService extends Service {
             e.printStackTrace();
         }
         return info;
-    }
-
-    private String getTopActivity() {
-        long ts = System.currentTimeMillis();
-        UsageStatsManager usm = (UsageStatsManager) getSystemService(USAGE_STATS_SERVICE);
-        List<UsageStats> queryUsageStats = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST,ts-2000, ts);
-
-        if (queryUsageStats == null || queryUsageStats.isEmpty()) {
-            return null;
-        }
-
-        UsageStats recentStats = null;
-        for (UsageStats usageStats : queryUsageStats) {
-            if(recentStats == null || recentStats.getLastTimeUsed() < usageStats.getLastTimeUsed()){
-                recentStats = usageStats;
-            }
-        }
-        return recentStats.getPackageName();
     }
 
     private Handler mHandler = new Handler() {

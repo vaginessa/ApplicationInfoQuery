@@ -88,15 +88,21 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.all_application_info:
-
+                Intent all = new Intent(this, PackageListActivity.class);
+                all.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_ALL);
+                startActivity(all);
                 break;
 
             case R.id.system_application_info:
-
+                Intent system = new Intent(this, PackageListActivity.class);
+                system.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_SYSTEM);
+                startActivity(system);
                 break;
 
             case R.id.non_system_application_info:
-
+                Intent nonsystem = new Intent(this, PackageListActivity.class);
+                nonsystem.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_NON_SYSTEM);
+                startActivity(nonsystem);
                 break;
 
             case R.id.activity_query:
