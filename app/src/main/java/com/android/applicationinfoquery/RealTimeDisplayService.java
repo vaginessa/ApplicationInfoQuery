@@ -3,6 +3,8 @@ package com.android.applicationinfoquery;
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.Service;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -14,8 +16,12 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class RealTimeDisplayService extends Service {
 
@@ -80,15 +86,17 @@ public class RealTimeDisplayService extends Service {
 
     private void initFloatWindow() {
         mLayoutParams = new WindowManager.LayoutParams();
-        mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         mLayoutParams.format = PixelFormat.RGBA_8888;
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
         mLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        mLayoutParams.gravity = Gravity.RIGHT;
-        mInfoTv = new TextView(this);
-        mInfoTv.setTextColor(0xffff0000);
+        mLayoutParams.gravity = Gravity.RIGHT | Gravity.TOP;
+        mLayoutParams.x = 0;
+        mLayoutParams.y = 0;
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        mInfoTv = (TextView) inflater.inflate(R.layout.real_time_info_view, null);
     }
 
     private void showFloatWindow() {
@@ -98,7 +106,7 @@ public class RealTimeDisplayService extends Service {
             mWindowManager.addView(mInfoTv, mLayoutParams);
             startForeground();
             mIsShowing = true;
-            mHandler.sendEmptyMessageDelayed(MSG_REFRESH,mRefreshTime);
+            mHandler.sendEmptyMessageDelayed(MSG_REFRESH,mRefreshTime * 1000);
         }
     }
 
@@ -140,6 +148,7 @@ public class RealTimeDisplayService extends Service {
             info.append(getString(R.string.top_application_classname, cn.getClassName()));
         }
         Log.d(this, "getTopActivityInfo=>info: " + info.toString());
+        Log.d(this, "getTopActivityInfo=>packageName: " + getTopActivityInfo());
         return info.toString();
     }
 
@@ -157,6 +166,24 @@ public class RealTimeDisplayService extends Service {
         return info;
     }
 
+    private String getTopActivity() {
+        long ts = System.currentTimeMillis();
+        UsageStatsManager usm = (UsageStatsManager) getSystemService(USAGE_STATS_SERVICE);
+        List<UsageStats> queryUsageStats = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST,ts-2000, ts);
+
+        if (queryUsageStats == null || queryUsageStats.isEmpty()) {
+            return null;
+        }
+
+        UsageStats recentStats = null;
+        for (UsageStats usageStats : queryUsageStats) {
+            if(recentStats == null || recentStats.getLastTimeUsed() < usageStats.getLastTimeUsed()){
+                recentStats = usageStats;
+            }
+        }
+        return recentStats.getPackageName();
+    }
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -164,7 +191,7 @@ public class RealTimeDisplayService extends Service {
                 case MSG_REFRESH:
                     if (mIsShowing) {
                         updateFloatWindow();
-                        mHandler.sendEmptyMessageDelayed(MSG_REFRESH, mRefreshTime);
+                        mHandler.sendEmptyMessageDelayed(MSG_REFRESH, mRefreshTime * 1000);
                     }
                     break;
             }
