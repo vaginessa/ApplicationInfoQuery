@@ -20,9 +20,11 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
     private Button mAllApplicationInfoBt;
     private Button mSystemApplicationInfoBt;
     private Button mNonSystemApplicationInfoBt;
+    private Button mPackageQueryBt;
     private Button mActivityQueryBt;
     private Button mServiceQueryBt;
     private Button mBroadcastQueryBt;
+    private Button mProviderQueryBt;
     private MenuItem mRealTimeDisplayMenu;
     private IRealTimeDisplayService mService;
 
@@ -89,20 +91,24 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         switch (view.getId()) {
             case R.id.all_application_info:
                 Intent all = new Intent(this, PackageListActivity.class);
-                all.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_ALL);
+                all.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_ALL);
                 startActivity(all);
                 break;
 
             case R.id.system_application_info:
                 Intent system = new Intent(this, PackageListActivity.class);
-                system.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_SYSTEM);
+                system.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_SYSTEM);
                 startActivity(system);
                 break;
 
             case R.id.non_system_application_info:
                 Intent nonsystem = new Intent(this, PackageListActivity.class);
-                nonsystem.putExtra(PackageListActivity.EXTRA_PACKAGE_TYPE, PackageListActivity.TYPE_NON_SYSTEM);
+                nonsystem.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_NON_SYSTEM);
                 startActivity(nonsystem);
+                break;
+
+            case R.id.package_query:
+
                 break;
 
             case R.id.activity_query:
@@ -116,6 +122,10 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
             case R.id.broadcast_query:
 
                 break;
+
+            case R.id.provider_query:
+
+                break;
         }
     }
 
@@ -123,16 +133,20 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         mAllApplicationInfoBt = (Button) findViewById(R.id.all_application_info);
         mSystemApplicationInfoBt = (Button) findViewById(R.id.system_application_info);
         mNonSystemApplicationInfoBt = (Button) findViewById(R.id.non_system_application_info);
+        mPackageQueryBt = (Button) findViewById(R.id.package_query);
         mActivityQueryBt = (Button) findViewById(R.id.activity_query);
         mServiceQueryBt = (Button) findViewById(R.id.service_query);
         mBroadcastQueryBt = (Button) findViewById(R.id.broadcast_query);
+        mProviderQueryBt = (Button) findViewById(R.id.provider_query);
 
         mAllApplicationInfoBt.setOnClickListener(this);
         mSystemApplicationInfoBt.setOnClickListener(this);
         mNonSystemApplicationInfoBt.setOnClickListener(this);
+        mPackageQueryBt.setOnClickListener(this);
         mActivityQueryBt.setOnClickListener(this);
         mServiceQueryBt.setOnClickListener(this);
         mBroadcastQueryBt.setOnClickListener(this);
+        mProviderQueryBt.setOnClickListener(this);
     }
 
     private void bindRealTimeDisplayService() {

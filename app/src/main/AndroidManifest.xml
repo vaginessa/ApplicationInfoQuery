@@ -27,9 +27,16 @@
         <activity android:name=".PackageListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ApplicationInfoActivity" />
+        <activity android:name=".PackageInfoActivity" />
+        <activity android:name=".ActivitiesListActivity"></activity>
+        <activity android:name=".ServicesListActivity"></activity>
+        <activity android:name=".BroadcastsListActivity"></activity>
+        <activity android:name=".ProvidersListActivity"></activity>
     </application>
 
 </manifest>

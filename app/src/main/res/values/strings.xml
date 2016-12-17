@@ -3,15 +3,79 @@
     <string name="all_application_info">"所有应用信息"</string>
     <string name="system_application_info">"系统应用信息"</string>
     <string name="non_system_application_info">"非系统应用信息"</string>
+    <string name="package_query">"Package查询"</string>
     <string name="activity_query">"Activity查询"</string>
     <string name="service_query">"Service查询"</string>
     <string name="broadcast_query">"Broadcast查询"</string>
+    <string name="provider_query">"Provider查询"</string>
     <string name="displays_real_time_info">"显示实时信息"</string>
     <string name="turn_off_real_time_info">"关闭实时信息"</string>
+    <string name="package_list_empty_text">"没有找到应用"</string>
     <string name="top_application_name">"应用名称："<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_packagename">"包名："<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_classname">"类名："<xliff:g id="name">%s</xliff:g></string>
     <string name="all_application_title">"所有应用"</string>
     <string name="system_application_title">"系统应用"</string>
     <string name="non_system_application_title">"非系统应用"</string>
+    <string name="unknown_name">"未知应用名称"</string>
+    <string name="not_find_launcher_activity">"没有启动活动"</string>
+    <string name="start_application">"启动应用"</string>
+    <string name="stop_application">"停止应用"</string>
+    <string name="clear_application_data">"清除数据"</string>
+    <string name="clear_application_cache">"清除缓存"</string>
+    <string name="application_info_title">"应用信息"</string>
+    <string name="activity_info_title">"Activitys信息"</string>
+    <string name="service_info_title">"Services信息"</string>
+    <string name="broadcast_info_title">"Broadcasts信息"</string>
+    <string name="provider_info_title">"Providers信息"</string>
+    <string name="package_info_title"><xliff:g id="title">%s</xliff:g>"应用信息"</string>
+    <string name="application_info_activity_title"><xliff:g id="title">%s</xliff:g>"应用信息"</string>
+    <string name="no_application_info_empty_text">"无法获取应用信息"</string>
+    <string name="application_name">"应用名称"</string>
+    <string name="version">"版本号"</string>
+    <string name="shared_user_id">"共享用户ID"</string>
+    <string name="package_name">"包名"</string>
+    <string name="launcer_activity">"启动活动"</string>
+    <string name="first_install_time">"首次安装时间"</string>
+    <string name="last_update_time">"上次更新时间"</string>
+    <string name="base_revision_code">"基础修订代码"</string>
+    <string name="install_location">"安装位置"</string>
+    <string name="unknown_install_location">"未知安装位置"</string>
+    <string name="install_location_auto">"系统自动选择"</string>
+    <string name="install_location_internal_only">"仅系统存储"</string>
+    <string name="install_location_prefer_eternal">"优先外部存储"</string>
+    <string name="shared_user_label">"共享用户标签"</string>
+    <string name="permissions">"权限"</string>
+    <string name="back_up_agent_name">"备份代理名称"</string>
+    <string name="application_class_name">"Application类名"</string>
+    <string name="data_dir">"数据目录"</string>
+    <string name="device_protected_data_dir">"设备保护数据目录"</string>
+    <string name="manage_space_activity_name">"管理空间活动名称"</string>
+    <string name="native_library_dir">"本地库文件目录"</string>
+    <string name="process_name">"进程名称"</string>
+    <string name="public_source_dir">"公共资源目录"</string>
+    <string name="source_dir">"资源目录"</string>
+    <string name="task_affinity">"任务栈名"</string>
+    <string name="min_sdk_version">"支持最低Android版本"</string>
+    <string name="compatible_width_limit_dp">"支持最低屏幕密度"</string>
+    <string name="decription_res">"资源描述"</string>
+    <string name="description">"描述"</string>
+    <string name="enabled">"Enabled"</string>
+    <string name="flags">"标志位"</string>
+    <string name="largest_width_limit_dp">"支持最大屏幕密度"</string>
+    <string name="require_smallest_width_dp">"要求最小屏幕密度"</string>
+    <string name="uid">UID</string>
+    <string name="ui_options">UI Option</string>
+    <string name="theme">"主题"</string>
+    <string name="feature">"功能"</string>
+    <string name="activities_list_title"><xliff:g id="title">%s</xliff:g>"活动列表"</string>
+    <string name="activity_list_empty_text">"没有找到活动"</string>
+    <string name="services_list_title"><xliff:g id="title">%s</xliff:g>"服务列表"</string>
+    <string name="service_list_empty_text">"没有找到服务"</string>
+    <string name="broadcast_list_title"><xliff:g id="title">%s</xliff:g>"广播列表"</string>
+    <string name="broadcast_list_empty_text">"没有找到广播"</string>
+    <string name="provider_list_title"><xliff:g id="title">%s</xliff:g>"内容提供器列表"</string>
+    <string name="provider_list_empty_text">"没有找到内容提供器"</string>
+
+
 </resources>

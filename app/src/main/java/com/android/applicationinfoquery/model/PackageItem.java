@@ -3,22 +3,32 @@ package com.android.applicationinfoquery.model;
 import android.graphics.drawable.Drawable;
 
 public class PackageItem {
+
     private Drawable mIcon;
+    private int mUid;
     private String mName;
     private String mPackageName;
-    private String mMainActivity;
+    private String mLauncherActivity;
+    private boolean mHasLauncherActivity;
     private boolean mIsSystemApp;
 
-    public PackageItem(Drawable icon, String name, String packageName, String mainActivity, boolean systemApp) {
+    public PackageItem(Drawable icon, int uid, String name, String packageName,
+                       String launcherActivity, boolean hasLauncherActivity, boolean systemApp) {
         mIcon = icon;
+        mUid = uid;
         mName = name;
         mPackageName = packageName;
-        mMainActivity = mainActivity;
+        mLauncherActivity = launcherActivity;
+        mHasLauncherActivity = hasLauncherActivity;
         mIsSystemApp = systemApp;
     }
 
     public Drawable getIcon() {
         return mIcon;
+    }
+
+    public int getUid() {
+        return mUid;
     }
 
     public String getName() {
@@ -29,8 +39,12 @@ public class PackageItem {
         return mPackageName;
     }
 
-    public String getMainActivity() {
-        return mMainActivity;
+    public String getLauncherActivity() {
+        return mLauncherActivity;
+    }
+
+    public boolean hasLauncherActivity() {
+        return mHasLauncherActivity;
     }
 
     public boolean isSystemApp() {
@@ -39,6 +53,7 @@ public class PackageItem {
 
     @Override
     public String toString() {
-        return "[" + mIcon + ", " + mName + ", " + ", " + mPackageName + ", " + mMainActivity + "," + mIsSystemApp + "]";
+        return "[" + mIcon + ", " + mUid + ", " + mName + ", " + ", " + mPackageName
+                + ", " + mLauncherActivity + "," + mHasLauncherActivity + ", " + mIsSystemApp + "]";
     }
 }

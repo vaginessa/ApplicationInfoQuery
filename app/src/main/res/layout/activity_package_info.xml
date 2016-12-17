@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,37 +14,7 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <Button
-            android:id="@+id/all_application_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/all_application_info"/>
-
-        <Button
-            android:id="@+id/system_application_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/system_application_info"/>
-
-        <Button
-            android:id="@+id/non_system_application_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/non_system_application_info"/>
-
-        <Button
-            android:id="@+id/package_query"
+            android:id="@+id/applications_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_button_margin_top"
@@ -53,10 +22,10 @@
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:textAllCaps="false"
-            android:text="@string/package_query"/>
+            android:text="@string/application_info_title"/>
 
         <Button
-            android:id="@+id/activity_query"
+            android:id="@+id/activities_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_button_margin_top"
@@ -64,10 +33,10 @@
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:textAllCaps="false"
-            android:text="@string/activity_query"/>
+            android:text="@string/activity_info_title"/>
 
         <Button
-            android:id="@+id/service_query"
+            android:id="@+id/services_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_button_margin_top"
@@ -75,10 +44,10 @@
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:textAllCaps="false"
-            android:text="@string/service_query"/>
+            android:text="@string/service_info_title"/>
 
         <Button
-            android:id="@+id/broadcast_query"
+            android:id="@+id/broadcasts_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_button_margin_top"
@@ -86,10 +55,10 @@
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:textAllCaps="false"
-            android:text="@string/broadcast_query"/>
+            android:text="@string/broadcast_info_title"/>
 
         <Button
-            android:id="@+id/provider_query"
+            android:id="@+id/providers_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_button_margin_top"
@@ -97,6 +66,7 @@
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:textAllCaps="false"
-            android:text="@string/provider_query"/>
+            android:text="@string/provider_info_title"/>
+
     </LinearLayout>
 </ScrollView>
