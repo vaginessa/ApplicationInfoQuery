@@ -1,4 +1,4 @@
-package com.android.applicationinfoquery.model;
+package com.android.aiq.model;
 
 /**
  * Created by Administrator on 2016/12/16.

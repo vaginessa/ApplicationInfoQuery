@@ -1,6 +1,10 @@
-package com.android.applicationinfoquery.model;
+package com.android.aiq.model;
 
 import android.graphics.drawable.Drawable;
+
+/**
+ * Created by user on 16-12-19.
+ */
 
 public class PackageItem {
 
@@ -13,14 +17,14 @@ public class PackageItem {
     private boolean mIsSystemApp;
 
     public PackageItem(Drawable icon, int uid, String name, String packageName,
-                       String launcherActivity, boolean hasLauncherActivity, boolean systemApp) {
+                       String launcherActivity, boolean hasLauncherActivity, boolean isSystemApp) {
         mIcon = icon;
         mUid = uid;
         mName = name;
         mPackageName = packageName;
         mLauncherActivity = launcherActivity;
         mHasLauncherActivity = hasLauncherActivity;
-        mIsSystemApp = systemApp;
+        mIsSystemApp = isSystemApp;
     }
 
     public Drawable getIcon() {
@@ -53,7 +57,7 @@ public class PackageItem {
 
     @Override
     public String toString() {
-        return "[" + mIcon + ", " + mUid + ", " + mName + ", " + ", " + mPackageName
-                + ", " + mLauncherActivity + "," + mHasLauncherActivity + ", " + mIsSystemApp + "]";
+        return "[" + mIcon + ", " + mUid + ", " + mName + ", " + mPackageName
+                + ", " + mLauncherActivity + ", " + mHasLauncherActivity + ", " + mIsSystemApp + "]";
     }
 }

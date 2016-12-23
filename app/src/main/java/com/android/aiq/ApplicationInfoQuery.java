@@ -1,6 +1,5 @@
-package com.android.applicationinfoquery;
+package com.android.aiq;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Service;
 import android.content.ComponentName;
@@ -14,6 +13,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.android.aiq.activitys.ActivityQueryActivity;
+import com.android.aiq.broadcasts.BroadcastQueryActivity;
+import com.android.aiq.packages.PackageListActivity;
+import com.android.aiq.packages.PackageQueryActivity;
+import com.android.aiq.providers.ProviderQueryActivity;
+import com.android.aiq.service.ServiceQueryActivity;
+import com.android.aiq.utils.Utils;
+import com.android.applicationinfoquery.IRealTimeDisplayService;
 
 public class ApplicationInfoQuery extends Activity implements View.OnClickListener {
 
@@ -108,23 +116,28 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
                 break;
 
             case R.id.package_query:
-
+                Intent packageQuery = new Intent(this, PackageQueryActivity.class);
+                startActivity(packageQuery);
                 break;
 
             case R.id.activity_query:
-
+                Intent activityQuery = new Intent(this, ActivityQueryActivity.class);
+                startActivity(activityQuery);
                 break;
 
             case R.id.service_query:
-
+                Intent serviceQuery = new Intent(this, ServiceQueryActivity.class);
+                startActivity(serviceQuery);
                 break;
 
             case R.id.broadcast_query:
-
+                Intent broadcastQuery = new Intent(this, BroadcastQueryActivity.class);
+                startActivity(broadcastQuery);
                 break;
 
             case R.id.provider_query:
-
+                Intent providerQuery = new Intent(this, ProviderQueryActivity.class);
+                startActivity(providerQuery);
                 break;
         }
     }

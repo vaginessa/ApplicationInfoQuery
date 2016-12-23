@@ -1,4 +1,4 @@
-package com.android.applicationinfoquery.model;
+package com.android.aiq.model;
 
 import android.graphics.drawable.Drawable;
 
@@ -6,14 +6,14 @@ import android.graphics.drawable.Drawable;
  * Created by user on 16-12-17.
  */
 
-public class ActivityItem {
+public class ListItem {
 
     private Drawable mIcon;
     private String mName;
     private String mPackageName;
     private String mClassName;
 
-    public ActivityItem(Drawable icon, String name, String packageName, String className) {
+    public ListItem(Drawable icon, String name, String packageName, String className) {
         mIcon = icon;
         mName = name;
         mPackageName = packageName;

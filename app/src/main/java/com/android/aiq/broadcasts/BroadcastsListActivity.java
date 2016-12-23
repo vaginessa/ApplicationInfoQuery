@@ -1,6 +1,5 @@
-package com.android.applicationinfoquery;
+package com.android.aiq.broadcasts;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,21 +16,24 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.applicationinfoquery.model.ActivityItem;
-import com.android.applicationinfoquery.model.PackageItem;
+import com.android.aiq.R;
+import com.android.aiq.utils.BroadcastUtils;
+import com.android.aiq.utils.Utils;
+import com.android.aiq.model.ListItem;
 
 import java.util.ArrayList;
 
-public class ActivitiesListActivity extends ListActivity implements AdapterView.OnItemClickListener {
+public class BroadcastsListActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
     private PackageManager mPackageManager;
     private ListView mListView;
     private TextView mEmptyView;
-    private ActivityListAdapter mAdapter;
-    private ArrayList<ActivityItem> mList;
+    private BroadcastListAdapter mAdapter;
+    private ArrayList<ListItem> mList;
 
     private String mPackageName;
     private String mPackageLabel;
+    private Intent mQueryIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class ActivitiesListActivity extends ListActivity implements AdapterView.
         mPackageManager = getPackageManager();
         mListView = getListView();
         mEmptyView = (TextView) getLayoutInflater().inflate(R.layout.empty_list_view, mListView, false);
-        mEmptyView.setText(R.string.activity_list_empty_text);
+        mEmptyView.setText(R.string.broadcast_list_empty_text);
         ((ViewGroup)getListView().getParent()).addView(mEmptyView);
         mListView.setOnItemClickListener(this);
         mListView.setEmptyView(mEmptyView);
@@ -55,12 +57,18 @@ public class ActivitiesListActivity extends ListActivity implements AdapterView.
         if (intent != null) {
             mPackageName = intent.getStringExtra(Utils.EXTRA_PACKAGE_NAME);
             mPackageLabel = intent.getStringExtra(Utils.EXTRA_APPLICATION_LABEL);
+            mQueryIntent = intent.getParcelableExtra(Utils.EXTRA_INTENT);
         }
 
         if (!TextUtils.isEmpty(mPackageName) && !TextUtils.isEmpty(mPackageLabel)) {
-            setTitle(getString(R.string.activities_list_title, mPackageLabel));
-            mList = Utils.getActivitiesList(this, mPackageName);
-            mAdapter = new ActivityListAdapter(this, mList);
+            setTitle(getString(R.string.broadcast_list_title, mPackageLabel));
+            mList = BroadcastUtils.getBroadcastsList(this, mPackageName);
+            mAdapter = new BroadcastListAdapter(this, mList);
+            mListView.setAdapter(mAdapter);
+        } else if (mQueryIntent != null) {
+            setTitle(R.string.broadcast_query_result_title);
+            mList = BroadcastUtils.getBroadcastsListByIntent(this, mQueryIntent);
+            mAdapter = new BroadcastListAdapter(this, mList);
             mListView.setAdapter(mAdapter);
         } else {
             finish();
@@ -79,16 +87,21 @@ public class ActivitiesListActivity extends ListActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        ListItem item = mAdapter.getItem(position);
+        Intent broadcast = new Intent(this, BroadcastInfoActivity.class);
+        broadcast.putExtra(Utils.EXTRA_APPLICATION_LABEL, item.getName());
+        broadcast.putExtra(Utils.EXTRA_PACKAGE_NAME, item.getPackageName());
+        broadcast.putExtra(Utils.EXTRA_CLASS_NAME, item.getClassName());
+        startActivity(broadcast);
     }
 
-    private class ActivityListAdapter extends BaseAdapter {
+    private class BroadcastListAdapter extends BaseAdapter {
 
         private Context mContext;
         private LayoutInflater mInflater;
-        private ArrayList<ActivityItem> mList;
+        private ArrayList<ListItem> mList;
 
-        public ActivityListAdapter(Context context, ArrayList<ActivityItem> list) {
+        public BroadcastListAdapter(Context context, ArrayList<ListItem> list) {
             mContext = context;
             mInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             mList = list;
@@ -100,7 +113,7 @@ public class ActivitiesListActivity extends ListActivity implements AdapterView.
         }
 
         @Override
-        public ActivityItem getItem(int position) {
+        public ListItem getItem(int position) {
             return mList.get(position);
         }
 
@@ -123,7 +136,7 @@ public class ActivitiesListActivity extends ListActivity implements AdapterView.
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            ActivityItem item = mList.get(i);
+            ListItem item = mList.get(i);
             holder.icon.setImageDrawable(item.getIcon());
             holder.name.setText(item.getName());
             holder.packageName.setText(item.getPackageName());

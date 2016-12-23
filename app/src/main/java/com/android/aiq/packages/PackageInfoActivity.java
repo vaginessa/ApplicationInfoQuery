@@ -1,13 +1,20 @@
-package com.android.applicationinfoquery;
+package com.android.aiq.packages;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.android.aiq.R;
+import com.android.aiq.providers.ProvidersListActivity;
+import com.android.aiq.utils.Utils;
+import com.android.aiq.activitys.ActivitiesListActivity;
+import com.android.aiq.applications.ApplicationInfoActivity;
+import com.android.aiq.broadcasts.BroadcastsListActivity;
+import com.android.aiq.service.ServicesListActivity;
 
 public class PackageInfoActivity extends Activity implements View.OnClickListener {
 

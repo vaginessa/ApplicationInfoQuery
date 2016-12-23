@@ -1,6 +1,7 @@
-package com.android.applicationinfoquery;
+package com.android.aiq.activitys;
 
 import android.app.ListActivity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,21 +17,24 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.applicationinfoquery.model.BroadcastItem;
-import com.android.applicationinfoquery.model.ProviderItem;
+import com.android.aiq.R;
+import com.android.aiq.model.ListItem;
+import com.android.aiq.utils.ActivityUtils;
+import com.android.aiq.utils.Utils;
 
 import java.util.ArrayList;
 
-public class ProvidersListActivity extends ListActivity implements AdapterView.OnItemClickListener {
+public class ActivitiesListActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
     private PackageManager mPackageManager;
     private ListView mListView;
     private TextView mEmptyView;
-    private ProviderListAdapter mAdapter;
-    private ArrayList<ProviderItem> mList;
+    private ActivityListAdapter mAdapter;
+    private ArrayList<ListItem> mList;
 
     private String mPackageName;
     private String mPackageLabel;
+    private Intent mQueryIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class ProvidersListActivity extends ListActivity implements AdapterView.O
         mPackageManager = getPackageManager();
         mListView = getListView();
         mEmptyView = (TextView) getLayoutInflater().inflate(R.layout.empty_list_view, mListView, false);
-        mEmptyView.setText(R.string.provider_list_empty_text);
+        mEmptyView.setText(R.string.activity_list_empty_text);
         ((ViewGroup)getListView().getParent()).addView(mEmptyView);
         mListView.setOnItemClickListener(this);
         mListView.setEmptyView(mEmptyView);
@@ -54,12 +58,18 @@ public class ProvidersListActivity extends ListActivity implements AdapterView.O
         if (intent != null) {
             mPackageName = intent.getStringExtra(Utils.EXTRA_PACKAGE_NAME);
             mPackageLabel = intent.getStringExtra(Utils.EXTRA_APPLICATION_LABEL);
+            mQueryIntent = intent.getParcelableExtra(Utils.EXTRA_INTENT);
         }
 
         if (!TextUtils.isEmpty(mPackageName) && !TextUtils.isEmpty(mPackageLabel)) {
-            setTitle(getString(R.string.provider_list_title, mPackageLabel));
-            mList = Utils.getProvidersList(this, mPackageName);
-            mAdapter = new ProviderListAdapter(this, mList);
+            setTitle(getString(R.string.activities_list_title, mPackageLabel));
+            mList = ActivityUtils.getActivitiesList(this, mPackageName);
+            mAdapter = new ActivityListAdapter(this, mList);
+            mListView.setAdapter(mAdapter);
+        } else if (mQueryIntent != null) {
+            setTitle(R.string.activity_query_result_title);
+            mList = ActivityUtils.getActivitiesListByIntent(this, mQueryIntent);
+            mAdapter = new ActivityListAdapter(this, mList);
             mListView.setAdapter(mAdapter);
         } else {
             finish();
@@ -78,16 +88,21 @@ public class ProvidersListActivity extends ListActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        ListItem item = mAdapter.getItem(position);
+        Intent intent = new Intent(this, ActivityInfoActivity.class);
+        intent.putExtra(Utils.EXTRA_PACKAGE_NAME, item.getPackageName());
+        intent.putExtra(Utils.EXTRA_CLASS_NAME, item.getClassName());
+        intent.putExtra(Utils.EXTRA_APPLICATION_LABEL, item.getName());
+        startActivity(intent);
     }
 
-    private class ProviderListAdapter extends BaseAdapter {
+    private class ActivityListAdapter extends BaseAdapter {
 
         private Context mContext;
         private LayoutInflater mInflater;
-        private ArrayList<ProviderItem> mList;
+        private ArrayList<ListItem> mList;
 
-        public ProviderListAdapter(Context context, ArrayList<ProviderItem> list) {
+        public ActivityListAdapter(Context context, ArrayList<ListItem> list) {
             mContext = context;
             mInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             mList = list;
@@ -99,7 +114,7 @@ public class ProvidersListActivity extends ListActivity implements AdapterView.O
         }
 
         @Override
-        public ProviderItem getItem(int position) {
+        public ListItem getItem(int position) {
             return mList.get(position);
         }
 
@@ -122,7 +137,7 @@ public class ProvidersListActivity extends ListActivity implements AdapterView.O
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            ProviderItem item = mList.get(i);
+            ListItem item = mList.get(i);
             holder.icon.setImageDrawable(item.getIcon());
             holder.name.setText(item.getName());
             holder.packageName.setText(item.getPackageName());

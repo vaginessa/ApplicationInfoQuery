@@ -1,19 +1,15 @@
-package com.android.applicationinfoquery;
+package com.android.aiq.packages;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.UserHandle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,13 +20,15 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import com.android.applicationinfoquery.model.PackageItem;
-import com.android.applicationinfoquery.model.Type;
+import com.android.aiq.Log;
+import com.android.aiq.R;
+import com.android.aiq.utils.PackageUtils;
+import com.android.aiq.utils.Utils;
+import com.android.aiq.model.PackageItem;
+import com.android.aiq.model.Type;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -84,7 +82,7 @@ public class PackageListActivity extends ListActivity implements AdapterView.OnI
         if (mType == Type.UNKNOWN) {
             finish();
         } else {
-            mList = Utils.getPackageItems(this, mType);
+            mList = PackageUtils.getPackageItems(this, mType);
             mAdapter = new PackageListAdapter(this, mList);
             mListView.setAdapter(mAdapter);
         }

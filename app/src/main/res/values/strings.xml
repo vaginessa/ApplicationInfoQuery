@@ -65,7 +65,6 @@
     <string name="largest_width_limit_dp">"支持最大屏幕密度"</string>
     <string name="require_smallest_width_dp">"要求最小屏幕密度"</string>
     <string name="uid">UID</string>
-    <string name="ui_options">UI Option</string>
     <string name="theme">"主题"</string>
     <string name="feature">"功能"</string>
     <string name="activities_list_title"><xliff:g id="title">%s</xliff:g>"活动列表"</string>
@@ -76,6 +75,52 @@
     <string name="broadcast_list_empty_text">"没有找到广播"</string>
     <string name="provider_list_title"><xliff:g id="title">%s</xliff:g>"内容提供器列表"</string>
     <string name="provider_list_empty_text">"没有找到内容提供器"</string>
-
+    <string name="no_activity_info_empty_text">"没有活动信息"</string>
+    <string name="activity_info_activity_title"><xliff:g id="title">%s</xliff:g>"活动信息"</string>
+    <string name="name">"名称"</string>
+    <string name="class_name">"类名"</string>
+    <string name="target_activity">"目标活动"</string>
+    <string name="parent_activity_name">"父活动"</string>
+    <string name="no_broadcast_info_empty_text">"没有广播信息"</string>
+    <string name="broadcast_info_activity_title"><xliff:g id="title">%s</xliff:g>"广播信息"</string>
+    <string name="config_changes">"配置改变"</string>
+    <string name="document_launch_mode">"文件启动模式"</string>
+    <string name="launch_mode">"启动模式"</string>
+    <string name="max_recents">"最大任务数量"</string>
+    <string name="persistable_mode">"持久模式"</string>
+    <string name="screen_orientation">"屏幕方向"</string>
+    <string name="soft_input_mode">"输入法模式"</string>
+    <string name="theme_resource">"主题资源"</string>
+    <string name="ui_options">"界面选项"</string>
+    <string name="window_layout">"窗口布局"</string>
+    <string name="banner">"标题"</string>
+    <string name="description_res">"资源描述"</string>
+    <string name="direct_boot_awre">"直接启动到"</string>
+    <string name="exported">"外部是否可以调用"</string>
+    <string name="banner_resource">"标题资源"</string>
+    <string name="icon_resource">"图标资源"</string>
+    <string name="logo_resource">"Logo资源"</string>
+    <string name="icon">"图标"</string>
+    <string name="label_res">"标签资源"</string>
+    <string name="logo">"LOGO"</string>
+    <string name="meta_data">"元数据"</string>
+    <string name="non_localized_label">"非本地标签"</string>
+    <string name="authority">Authority</string>
+    <string name="read_permission">Read Permission</string>
+    <string name="write_permission">Write Permission</string>
+    <string name="grant_uri_permissions">Grant uri permissions</string>
+    <string name="init_order">Init order</string>
+    <string name="multi_process">Multi process</string>
+    <string name="path_permissions">Path permissions</string>
+    <string name="uri_permission_patterns">Uri permission patterns</string>
+    <string name="is_syncable">Is Syncable</string>
+    <string name="query">Query</string>
+    <string name="non_find_app">"An application with the package "<xliff:g id="package">%s</xliff:g>" is not found"</string>
+    <string name="action">Action</string>
+    <string name="category">Category</string>
+    <string name="activity_query_result_title">Activity query result</string>
+    <string name="services_query_result_title">Service query result</string>
+    <string name="broadcast_query_result_title">Broadcast query result</string>
+    <string name="provider_query_result_title">Provider query result</string>
 
 </resources>

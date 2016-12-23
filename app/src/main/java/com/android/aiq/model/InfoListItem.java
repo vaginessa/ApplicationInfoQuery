@@ -1,15 +1,15 @@
-package com.android.applicationinfoquery.model;
+package com.android.aiq.model;
 
 /**
- * Created by user on 16-12-16.
+ * Created by user on 16-12-19.
  */
 
-public class ApplicationInfoItem {
+public class InfoListItem {
 
     private int mTitle;
     private String mInfo;
 
-    public ApplicationInfoItem(int title, String info) {
+    public InfoListItem(int title, String info) {
         mTitle = title;
         mInfo = info;
     }

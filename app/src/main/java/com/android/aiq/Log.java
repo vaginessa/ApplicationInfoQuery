@@ -1,4 +1,4 @@
-package com.android.applicationinfoquery;
+package com.android.aiq;
 
 import android.os.Build;
 

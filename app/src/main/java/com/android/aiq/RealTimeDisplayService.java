@@ -1,10 +1,8 @@
-package com.android.applicationinfoquery;
+package com.android.aiq;
 
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.Service;
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -20,8 +18,7 @@ import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
+import com.android.applicationinfoquery.IRealTimeDisplayService;
 
 public class RealTimeDisplayService extends Service {
 
