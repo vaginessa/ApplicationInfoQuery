@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ApplicationInfoQuery">
+        <activity android:name=".ApplicationInfoQuery"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +21,7 @@
         </activity>
 
         <service
-            android:name=".RealTimeDisplayService"
+            android:name=".ShowTopActivityService"
             android:enabled="true"
             android:exported="true" />
 

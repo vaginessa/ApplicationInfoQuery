@@ -14,13 +14,11 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.android.applicationinfoquery.IRealTimeDisplayService;
 
-public class RealTimeDisplayService extends Service {
+public class ShowTopActivityService extends Service {
 
     private static final int NOTIFY_ID = 8;
     private static final int MSG_REFRESH = 0;
@@ -56,7 +54,7 @@ public class RealTimeDisplayService extends Service {
         mActivityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         mPackageManager = getPackageManager();
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        mRefreshTime = getResources().getInteger(R.integer.real_time_display_refresh_time);
+        mRefreshTime = getResources().getInteger(R.integer.show_top_activity_refresh_time);
         mIsShowing = false;
         initFloatWindow();
     }
@@ -88,12 +86,12 @@ public class RealTimeDisplayService extends Service {
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
         mLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        mLayoutParams.gravity = Gravity.RIGHT | Gravity.TOP;
+        mLayoutParams.gravity = Gravity.LEFT | Gravity.BOTTOM;
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;
 
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        mInfoTv = (TextView) inflater.inflate(R.layout.real_time_info_view, null);
+        mInfoTv = new TextView(this);
+        mInfoTv.setTextColor(getColor(R.color.top_activity_text_color));
     }
 
     private void showFloatWindow() {
@@ -176,7 +174,7 @@ public class RealTimeDisplayService extends Service {
         }
     };
 
-    private class MyBinder extends IRealTimeDisplayService.Stub {
+    private class MyBinder extends IShowTopActivityService.Stub {
 
         @Override
         public boolean isShowing() throws RemoteException {

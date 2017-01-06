@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="real_time_info_text_color">#ff66dd66</color>
+    <color name="top_activity_text_color">#ff66dd66</color>
     <color name="application_info_title_text_color">#ff000000</color>
 
 </resources>

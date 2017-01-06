@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -21,20 +22,11 @@ import com.android.aiq.packages.PackageQueryActivity;
 import com.android.aiq.providers.ProviderQueryActivity;
 import com.android.aiq.service.ServiceQueryActivity;
 import com.android.aiq.utils.Utils;
-import com.android.applicationinfoquery.IRealTimeDisplayService;
 
 public class ApplicationInfoQuery extends Activity implements View.OnClickListener {
 
-    private Button mAllApplicationInfoBt;
-    private Button mSystemApplicationInfoBt;
-    private Button mNonSystemApplicationInfoBt;
-    private Button mPackageQueryBt;
-    private Button mActivityQueryBt;
-    private Button mServiceQueryBt;
-    private Button mBroadcastQueryBt;
-    private Button mProviderQueryBt;
-    private MenuItem mRealTimeDisplayMenu;
-    private IRealTimeDisplayService mService;
+    private MenuItem mShowTopActivityMenu;
+    private IShowTopActivityService mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,44 +34,57 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_application_info_query);
 
         initViews();
-        bindRealTimeDisplayService();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            bindShowTopActivityService();
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(mConnection);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            unbindService(mConnection);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onCreateOptionsMenu(menu);
+        }
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.application_info_query_menu, menu);
-        mRealTimeDisplayMenu = menu.findItem(R.id.real_time_display);
+        inflater.inflate(R.menu.menu_application_info_query, menu);
+        mShowTopActivityMenu = menu.findItem(R.id.real_time_display);
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onPrepareOptionsMenu(menu);
+        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
-                    mRealTimeDisplayMenu.setTitle(R.string.turn_off_real_time_info);
+                    mShowTopActivityMenu.setTitle(R.string.hide_top_activity);
                 } else {
-                    mRealTimeDisplayMenu.setTitle(R.string.displays_real_time_info);
+                    mShowTopActivityMenu.setTitle(R.string.show_top_activity);
                 }
             } catch (RemoteException e) {
                 Log.e(this, "onPrepareOptionsMenu=>error: ", e);
-                mRealTimeDisplayMenu.setEnabled(false);
+                mShowTopActivityMenu.setEnabled(false);
             }
         } else {
-            mRealTimeDisplayMenu.setEnabled(false);
+            mShowTopActivityMenu.setEnabled(false);
         }
         return true;
     }
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onMenuItemSelected(featureId, item);
+        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
@@ -143,34 +148,34 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
     }
 
     private void initViews() {
-        mAllApplicationInfoBt = (Button) findViewById(R.id.all_application_info);
-        mSystemApplicationInfoBt = (Button) findViewById(R.id.system_application_info);
-        mNonSystemApplicationInfoBt = (Button) findViewById(R.id.non_system_application_info);
-        mPackageQueryBt = (Button) findViewById(R.id.package_query);
-        mActivityQueryBt = (Button) findViewById(R.id.activity_query);
-        mServiceQueryBt = (Button) findViewById(R.id.service_query);
-        mBroadcastQueryBt = (Button) findViewById(R.id.broadcast_query);
-        mProviderQueryBt = (Button) findViewById(R.id.provider_query);
+        Button allApplicationInfoBt = (Button) findViewById(R.id.all_application_info);
+        Button systemApplicationInfoBt = (Button) findViewById(R.id.system_application_info);
+        Button nonSystemApplicationInfoBt = (Button) findViewById(R.id.non_system_application_info);
+        Button packageQueryBt = (Button) findViewById(R.id.package_query);
+        Button activityQueryBt = (Button) findViewById(R.id.activity_query);
+        Button serviceQueryBt = (Button) findViewById(R.id.service_query);
+        Button broadcastQueryBt = (Button) findViewById(R.id.broadcast_query);
+        Button providerQueryBt = (Button) findViewById(R.id.provider_query);
 
-        mAllApplicationInfoBt.setOnClickListener(this);
-        mSystemApplicationInfoBt.setOnClickListener(this);
-        mNonSystemApplicationInfoBt.setOnClickListener(this);
-        mPackageQueryBt.setOnClickListener(this);
-        mActivityQueryBt.setOnClickListener(this);
-        mServiceQueryBt.setOnClickListener(this);
-        mBroadcastQueryBt.setOnClickListener(this);
-        mProviderQueryBt.setOnClickListener(this);
+        allApplicationInfoBt.setOnClickListener(this);
+        systemApplicationInfoBt.setOnClickListener(this);
+        nonSystemApplicationInfoBt.setOnClickListener(this);
+        packageQueryBt.setOnClickListener(this);
+        activityQueryBt.setOnClickListener(this);
+        serviceQueryBt.setOnClickListener(this);
+        broadcastQueryBt.setOnClickListener(this);
+        providerQueryBt.setOnClickListener(this);
     }
 
-    private void bindRealTimeDisplayService() {
-        Intent service = new Intent(this, RealTimeDisplayService.class);
+    private void bindShowTopActivityService() {
+        Intent service = new Intent(this, ShowTopActivityService.class);
         bindService(service, mConnection, Service.BIND_AUTO_CREATE);
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            mService = IRealTimeDisplayService.Stub.asInterface(iBinder);
+            mService = IShowTopActivityService.Stub.asInterface(iBinder);
             Log.d("ServiceConnection", "onServiceConnected=>service: " + mService);
         }
 

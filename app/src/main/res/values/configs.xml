@@ -2,6 +2,6 @@
 <resources>
 
     <!-- 实时显示当前Activity信息更新时间间隔，单位：秒    -->
-    <integer name="real_time_display_refresh_time">3</integer>
+    <integer name="show_top_activity_refresh_time">3</integer>
 
 </resources>

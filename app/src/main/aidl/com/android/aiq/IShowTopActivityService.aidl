@@ -1,9 +1,9 @@
 // IRealTimeDisplayService.aidl
-package com.android.applicationinfoquery;
+package com.android.aiq;
 
 // Declare any non-default types here with import statements
 
-interface IRealTimeDisplayService {
+interface IShowTopActivityService {
 
     boolean isShowing();
     void showRealTimeInfo();

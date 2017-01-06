@@ -1,19 +1,27 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">"应用信息查询"</string>
-    <string name="all_application_info">"所有应用信息"</string>
-    <string name="system_application_info">"系统应用信息"</string>
-    <string name="non_system_application_info">"非系统应用信息"</string>
-    <string name="package_query">"Package查询"</string>
-    <string name="activity_query">"Activity查询"</string>
-    <string name="service_query">"Service查询"</string>
-    <string name="broadcast_query">"Broadcast查询"</string>
-    <string name="provider_query">"Provider查询"</string>
-    <string name="displays_real_time_info">"显示实时信息"</string>
-    <string name="turn_off_real_time_info">"关闭实时信息"</string>
+
+    <!--    common strings      -->
+    <string name="app_name">Application Info Query</string>
+
+    <!--    ApplicationInfoQuery.java Strings       -->
+    <string name="all_application">App Application</string>
+    <string name="system_application">System Application</string>
+    <string name="non_system_application">Non System Application</string>
+    <string name="package_query">Package Query</string>
+    <string name="activity_query">Activity Query</string>
+    <string name="service_query">Service Query</string>
+    <string name="broadcast_query">Broadcast Query</string>
+    <string name="provider_query">Provider Query</string>
+    <string name="show_top_activity">Show Top Activity</string>
+    <string name="hide_top_activity">Hide Top Activity</string>
+
+    <!--    ShowTopActivityService.java Strings     -->
+    <string name="top_application_name">"Aplication Name: "<xliff:g id="name">%s</xliff:g></string>
+    <string name="top_application_packagename">"Package Name: "<xliff:g id="name">%s</xliff:g></string>
+    <string name="top_application_classname">"Class Name: "<xliff:g id="name">%s</xliff:g></string>
+
+
     <string name="package_list_empty_text">"没有找到应用"</string>
-    <string name="top_application_name">"应用名称："<xliff:g id="name">%s</xliff:g></string>
-    <string name="top_application_packagename">"包名："<xliff:g id="name">%s</xliff:g></string>
-    <string name="top_application_classname">"类名："<xliff:g id="name">%s</xliff:g></string>
     <string name="all_application_title">"所有应用"</string>
     <string name="system_application_title">"系统应用"</string>
     <string name="non_system_application_title">"非系统应用"</string>

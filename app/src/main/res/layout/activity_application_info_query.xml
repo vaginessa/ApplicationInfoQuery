@@ -22,7 +22,8 @@
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/all_application_info"/>
+            android:textAllCaps="false"
+            android:text="@string/all_application"/>
 
         <Button
             android:id="@+id/system_application_info"
@@ -32,7 +33,8 @@
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/system_application_info"/>
+            android:textAllCaps="false"
+            android:text="@string/system_application"/>
 
         <Button
             android:id="@+id/non_system_application_info"
@@ -42,7 +44,8 @@
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
-            android:text="@string/non_system_application_info"/>
+            android:textAllCaps="false"
+            android:text="@string/non_system_application"/>
 
         <Button
             android:id="@+id/package_query"

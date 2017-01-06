@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/real_time_display"
-        android:title="@string/displays_real_time_info"
+        android:title="@string/show_top_activity"
         android:showAsAction="never"
         />
 </menu>
