@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ApplicationInfoQuery"
+        <activity
+            android:name=".ApplicationInfoQuery"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,14 @@
             android:name=".ShowTopActivityService"
             android:enabled="true"
             android:exported="true" />
+
+        <activity android:name=".ApplicationListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".packages.PackageListActivity">
             <intent-filter>

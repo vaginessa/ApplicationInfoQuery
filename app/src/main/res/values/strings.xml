@@ -2,9 +2,7 @@
 
     <!--    common strings      -->
     <string name="app_name">Application Info Query</string>
-
-    <!--    ApplicationInfoQuery.java Strings       -->
-    <string name="all_application">App Application</string>
+    <string name="all_application">All Application</string>
     <string name="system_application">System Application</string>
     <string name="non_system_application">Non System Application</string>
     <string name="package_query">Package Query</string>
@@ -12,13 +10,23 @@
     <string name="service_query">Service Query</string>
     <string name="broadcast_query">Broadcast Query</string>
     <string name="provider_query">Provider Query</string>
+
+    <!--    ApplicationInfoQuery.java Strings       -->
     <string name="show_top_activity">Show Top Activity</string>
     <string name="hide_top_activity">Hide Top Activity</string>
+    <string name="open">Open</string>
 
     <!--    ShowTopActivityService.java Strings     -->
     <string name="top_application_name">"Aplication Name: "<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_packagename">"Package Name: "<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_classname">"Class Name: "<xliff:g id="name">%s</xliff:g></string>
+
+    <!--    ApplicationListActivity.java String     -->
+    <string name="application_not_found">Application Not Found</string>
+    <string name="load_msg">Loading...</string>
+    <string name="unknown_applicatin_name">Unknown Application Name</string>
+    <string name="not_found_launcher_activity">Not Found Launcher Activity</string>
+    <string name="found_application_toast_msg"><xliff:g id="count">%d</xliff:g>" applications found"</string>
 
 
     <string name="package_list_empty_text">"没有找到应用"</string>

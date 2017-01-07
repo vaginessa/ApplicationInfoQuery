@@ -17,11 +17,9 @@ import android.widget.Button;
 
 import com.android.aiq.activitys.ActivityQueryActivity;
 import com.android.aiq.broadcasts.BroadcastQueryActivity;
-import com.android.aiq.packages.PackageListActivity;
 import com.android.aiq.packages.PackageQueryActivity;
 import com.android.aiq.providers.ProviderQueryActivity;
 import com.android.aiq.service.ServiceQueryActivity;
-import com.android.aiq.utils.Utils;
 
 public class ApplicationInfoQuery extends Activity implements View.OnClickListener {
 
@@ -103,20 +101,20 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.all_application_info:
-                Intent all = new Intent(this, PackageListActivity.class);
-                all.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_ALL);
+                Intent all = new Intent(this, ApplicationListActivity.class);
+                all.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_ALL_APPLICATION);
                 startActivity(all);
                 break;
 
             case R.id.system_application_info:
-                Intent system = new Intent(this, PackageListActivity.class);
-                system.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_SYSTEM);
+                Intent system = new Intent(this, ApplicationListActivity.class);
+                system.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_SYSTEM_APPLICATION);
                 startActivity(system);
                 break;
 
             case R.id.non_system_application_info:
-                Intent nonsystem = new Intent(this, PackageListActivity.class);
-                nonsystem.putExtra(Utils.EXTRA_PACKAGE_TYPE, Utils.TYPE_NON_SYSTEM);
+                Intent nonsystem = new Intent(this, ApplicationListActivity.class);
+                nonsystem.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_NON_SYSTEM_APPLICATION);
                 startActivity(nonsystem);
                 break;
 
