@@ -21,7 +21,7 @@
     <string name="top_application_packagename">"Package Name: "<xliff:g id="name">%s</xliff:g></string>
     <string name="top_application_classname">"Class Name: "<xliff:g id="name">%s</xliff:g></string>
 
-    <!--    ApplicationListActivity.java String     -->
+    <!--    ApplicationListActivity.java Strings     -->
     <string name="application_not_found">Application Not Found</string>
     <string name="load_msg">Loading...</string>
     <string name="unknown_applicatin_name">Unknown Application Name</string>
@@ -37,6 +37,13 @@
     <string name="copy_success">Copy Success</string>
     <string name="copy_msg">Copying...</string>
 
+    <!--    ApplicationInfoList.java Strings        -->
+    <string name="package_info">Package Info</string>
+    <string name="application_info">Application Info</string>
+    <string name="activity_info">Activity Info</string>
+    <string name="service_info">Service Info</string>
+    <string name="broadcast_info">Broadcast Info</string>
+    <string name="provider_info">Provider Info</string>
 
     <string name="package_list_empty_text">"没有找到应用"</string>
     <string name="all_application_title">"所有应用"</string>

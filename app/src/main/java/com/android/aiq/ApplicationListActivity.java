@@ -154,10 +154,9 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ListItem item = mAdapter.getItem(position);
-        Intent packageInfo = new Intent(this, PackageInfoActivity.class);
-        packageInfo.putExtra(com.android.aiq.utils.Utils.EXTRA_PACKAGE_NAME, item.packageName);
-        packageInfo.putExtra(com.android.aiq.utils.Utils.EXTRA_APPLICATION_LABEL, item.name);
-        startActivity(packageInfo);
+        Intent applicationInfoList = new Intent(this, ApplicationInfoList.class);
+        applicationInfoList.putExtra(Utils.EXTRA_PACKAGE_NAME, item.packageName);
+        startActivity(applicationInfoList);
     }
 
     private void initValues() {

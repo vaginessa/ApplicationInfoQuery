@@ -15,102 +15,69 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <Button
-            android:id="@+id/all_application_info"
+            android:id="@+id/package_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/all_application"
+            android:text="@string/package_info"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/system_application_info"
+            android:id="@+id/application_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/system_application"
+            android:text="@string/application_info"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/non_system_application_info"
+            android:id="@+id/activity_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/non_system_application"
+            android:text="@string/activity_info"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/uninstall_application_info"
+            android:id="@+id/service_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/uninstall_application"
+            android:text="@string/service_info"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/package_query"
+            android:id="@+id/broadcast_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/package_query"
+            android:text="@string/broadcast_info"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/activity_query"
+            android:id="@+id/provider_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_button_margin_bottom"
             android:layout_marginLeft="@dimen/main_button_margin_left"
             android:layout_marginRight="@dimen/main_button_margin_right"
             android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/activity_query"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/service_query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/service_query"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/broadcast_query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/broadcast_query"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/provider_query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_button_margin_bottom"
-            android:layout_marginLeft="@dimen/main_button_margin_left"
-            android:layout_marginRight="@dimen/main_button_margin_right"
-            android:layout_marginTop="@dimen/main_button_margin_top"
-            android:text="@string/provider_query"
+            android:text="@string/provider_info"
             android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

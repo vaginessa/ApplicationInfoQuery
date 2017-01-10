@@ -34,6 +34,7 @@ public class Utils {
     private static final String TAG = "Utils";
 
     public static final String EXTRA_TYPE = "type";
+    public static final String EXTRA_PACKAGE_NAME = "package_name";
     public static final int TYPE_ALL_APPLICATION = 0;
     public static final int TYPE_SYSTEM_APPLICATION = 1;
     public static final int TYPE_NON_SYSTEM_APPLICATION = 2;
@@ -124,7 +125,7 @@ public class Utils {
      * @param packageName 　应用的包名
      * @return 如果应用有启动活动, 则返回对应活动的Intent对象；否则返回null
      */
-    private static Intent getLauncherIntent(Context context, String packageName) {
+    public static Intent getLauncherIntent(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         Intent intent = pm.getLaunchIntentForPackage(packageName);
         return intent;
@@ -363,4 +364,22 @@ public class Utils {
         return result;
     }
 
+    /**
+     * 获取应用名称
+     * @param context　Context对象
+     * @param packageName 应用的包名
+     * @return 获取成功返回应用名称，否则返回未知应用字符串
+     */
+    public static String getApplicationLabel(Context context, String packageName) {
+        String label = "";
+        PackageManager pm = context.getPackageManager();
+        try {
+            PackageInfo info = pm.getPackageInfo(packageName, 0);
+            label = info.applicationInfo.loadLabel(pm).toString();
+        } catch (PackageManager.NameNotFoundException e) {
+            label = context.getString(R.string.unknown_applicatin_name);
+            Log.e(TAG, "getApplicationLabel=>error: ", e);
+        }
+        return label;
+    }
 }
