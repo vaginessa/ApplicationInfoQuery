@@ -48,6 +48,17 @@
             android:text="@string/non_system_application"/>
 
         <Button
+            android:id="@+id/uninstall_application_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/main_button_margin_top"
+            android:layout_marginBottom="@dimen/main_button_margin_bottom"
+            android:layout_marginLeft="@dimen/main_button_margin_left"
+            android:layout_marginRight="@dimen/main_button_margin_right"
+            android:textAllCaps="false"
+            android:text="@string/uninstall_application"/>
+
+        <Button
             android:id="@+id/package_query"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

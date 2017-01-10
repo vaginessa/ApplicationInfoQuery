@@ -118,6 +118,10 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
                 startActivity(nonsystem);
                 break;
 
+            case R.id.uninstall_application_info:
+
+                break;
+
             case R.id.package_query:
                 Intent packageQuery = new Intent(this, PackageQueryActivity.class);
                 startActivity(packageQuery);
@@ -149,6 +153,7 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         Button allApplicationInfoBt = (Button) findViewById(R.id.all_application_info);
         Button systemApplicationInfoBt = (Button) findViewById(R.id.system_application_info);
         Button nonSystemApplicationInfoBt = (Button) findViewById(R.id.non_system_application_info);
+        Button uninstallApplicationInfoBt = (Button) findViewById(R.id.uninstall_application_info);
         Button packageQueryBt = (Button) findViewById(R.id.package_query);
         Button activityQueryBt = (Button) findViewById(R.id.activity_query);
         Button serviceQueryBt = (Button) findViewById(R.id.service_query);
@@ -158,6 +163,7 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         allApplicationInfoBt.setOnClickListener(this);
         systemApplicationInfoBt.setOnClickListener(this);
         nonSystemApplicationInfoBt.setOnClickListener(this);
+        uninstallApplicationInfoBt.setOnClickListener(this);
         packageQueryBt.setOnClickListener(this);
         activityQueryBt.setOnClickListener(this);
         serviceQueryBt.setOnClickListener(this);

@@ -27,6 +27,15 @@
     <string name="unknown_applicatin_name">Unknown Application Name</string>
     <string name="not_found_launcher_activity">Not Found Launcher Activity</string>
     <string name="found_application_toast_msg"><xliff:g id="count">%d</xliff:g>" applications found"</string>
+    <string name="start_application">Start Application</string>
+    <string name="enabled_application">Enabled Application</string>
+    <string name="disabled_application">Disabled Application</string>
+    <string name="uninstall_application">Uninstall Application</string>
+    <string name="copy_application">Copy Application</string>
+    <string name="copy_application_msg">"Application has been copied to "<xliff:g id="path">%s</xliff:g></string>
+    <string name="copy_fail">Copy Fail</string>
+    <string name="copy_success">Copy Success</string>
+    <string name="copy_msg">Copying...</string>
 
 
     <string name="package_list_empty_text">"没有找到应用"</string>
@@ -35,7 +44,6 @@
     <string name="non_system_application_title">"非系统应用"</string>
     <string name="unknown_name">"未知应用名称"</string>
     <string name="not_find_launcher_activity">"没有启动活动"</string>
-    <string name="start_application">"启动应用"</string>
     <string name="stop_application">"停止应用"</string>
     <string name="clear_application_data">"清除数据"</string>
     <string name="clear_application_cache">"清除缓存"</string>

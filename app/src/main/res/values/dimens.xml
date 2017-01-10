@@ -4,12 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!--    listview empty text size    -->
     <integer name="empty_view_text_size">24</integer>
-    <!--    button background   -->
-    <dimen name="button_inset_horizontal_material">4dp</dimen>
-    <dimen name="button_inset_vertical_material">6dp</dimen>
-    <dimen name="control_corner_material">2dp</dimen>
-    <dimen name="button_padding_horizontal_material">8dp</dimen>
-    <dimen name="button_padding_vertical_material">4dp</dimen>
 
     <dimen name="list_item_horizontal_margin">4dp</dimen>
     <dimen name="list_item_vertical_margin">4dp</dimen>
