@@ -36,7 +36,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ApplicationInfoList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,28 +43,34 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".packages.PackageListActivity">
+        <activity
+            android:name=".UninstallApplication"
+            android:label="@string/uninstall_application">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".applications.ApplicationInfoActivity">
+        <activity
+            android:name=".PackageQueryActivity"
+            android:label="@string/package_query">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".packages.PackageInfoActivity">
+        <activity android:name=".PackageInfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--
+           *****************************************************
+           -->
         <activity android:name=".activitys.ActivitiesListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -122,13 +127,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".packages.PackageQueryActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activitys.ActivityQueryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -157,7 +155,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

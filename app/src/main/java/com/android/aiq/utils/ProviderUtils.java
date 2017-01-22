@@ -81,7 +81,7 @@ public class ProviderUtils {
         ProviderInfo pi = getProviderInfo(context, packageName, className);
         PackageManager pm = context.getPackageManager();
         if (pi != null) {
-            list.add(new InfoListItem(R.string.name, pi.loadLabel(pm).toString()));
+            list.add(new InfoListItem(R.string.info_name, pi.loadLabel(pm).toString()));
             list.add(new InfoListItem(R.string.package_name, pi.packageName));
             list.add(new InfoListItem(R.string.class_name, pi.name));
             list.add(new InfoListItem(R.string.decription_res, pi.descriptionRes + ""));

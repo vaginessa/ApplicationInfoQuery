@@ -1,4 +1,4 @@
-package com.android.aiq.packages;
+package com.android.aiq;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,12 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.aiq.ApplicationInfoQuery;
-import com.android.aiq.Log;
-import com.android.aiq.R;
-import com.android.aiq.applications.ApplicationInfoActivity;
-import com.android.aiq.utils.Utils;
-
 public class PackageQueryActivity extends Activity implements View.OnClickListener {
 
     private EditText mPackageNameEt;
@@ -29,25 +23,8 @@ public class PackageQueryActivity extends Activity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_package_query);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mPackageNameEt = (EditText) findViewById(R.id.package_name_et);
-        mQueryBt = (Button) findViewById(R.id.query);
-
-        mPackageNameEt.addTextChangedListener(mPackageNameWatcher);
-        mQueryBt.setOnClickListener(this);
-        mQueryBt.setEnabled(false);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        String text = mPackageNameEt.getText().toString();
-        if (!TextUtils.isEmpty(text)) {
-            mQueryBt.setEnabled(true);
-        } else {
-            mQueryBt.setEnabled(false);
-        }
+        initViews();
     }
 
     @Override
@@ -62,26 +39,32 @@ public class PackageQueryActivity extends Activity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.query:
-                queryPackage();
-                break;
-        }
-    }
-
-    private void queryPackage() {
-        String packageName = mPackageNameEt.getText().toString();
+        String packageName = mPackageNameEt.getText().toString().trim();
         PackageInfo info = null;
         try {
             info = getPackageManager().getPackageInfo(packageName, 0);
-            Intent intent = new Intent(this, PackageInfoActivity.class);
-            intent.putExtra(Utils.EXTRA_APPLICATION_LABEL, info.applicationInfo.loadLabel(getPackageManager()));
-            intent.putExtra(Utils.EXTRA_PACKAGE_NAME, info.packageName);
-            startActivity(intent);
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(this, "queryPackage=>error: ", e);
-            Toast.makeText(this, getString(R.string.non_find_app, packageName), Toast.LENGTH_SHORT).show();
+            Log.e(this, "onClick=>error: ", e);
+            info = null;
         }
+        Log.d(this, "onClick=>packageName: " + packageName + " info: " + info);
+        if (info != null) {
+            Intent intent = new Intent(this, ApplicationInfoList.class);
+            intent.putExtra(Utils.EXTRA_PACKAGE_NAME, packageName);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, getString(R.string.not_find_package, packageName), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void initViews() {
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        mPackageNameEt = (EditText) findViewById(R.id.package_name);
+        mQueryBt = (Button) findViewById(R.id.query);
+
+        mPackageNameEt.addTextChangedListener(mPackageNameWatcher);
+        mQueryBt.setOnClickListener(this);
+        mQueryBt.setEnabled(false);
     }
 
     private TextWatcher mPackageNameWatcher = new TextWatcher() {
@@ -104,4 +87,5 @@ public class PackageQueryActivity extends Activity implements View.OnClickListen
 
         }
     };
+
 }

@@ -6,7 +6,7 @@
         android:showAsAction="never" />
 
     <item android:id="@+id/disabled_or_enabled_application"
-        android:title="@string/disabled_application"
+        android:title="@string/install_application"
         android:showAsAction="never" />
 
     <item android:id="@+id/uninstall_application"

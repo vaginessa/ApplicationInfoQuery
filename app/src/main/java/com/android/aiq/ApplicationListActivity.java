@@ -6,9 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.ContextMenu;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,8 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.aiq.packages.PackageInfoActivity;
 
 import java.util.ArrayList;
 
@@ -165,19 +161,10 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
 
     private void initViews() {
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        mEmptyView = getEmptyView();
+        mEmptyView = Utils.getEmptyView(this, R.string.application_not_found);
         ((ViewGroup)getListView().getParent()).addView(mEmptyView);
         registerForContextMenu(getListView());
         getListView().setOnItemClickListener(this);
-    }
-
-    private TextView getEmptyView() {
-        TextView emptyView = new TextView(this);
-        emptyView.setGravity(Gravity.CENTER);
-        emptyView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.empty_view_text_size));
-        emptyView.setText(R.string.application_not_found);
-        emptyView.setVisibility(View.GONE);
-        return emptyView;
     }
 
     private void updateViews(int mType) {
@@ -342,7 +329,7 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.application_list_item, parent, false);
+                convertView = mInflater.inflate(R.layout.list_item, parent, false);
                 holder = new ViewHolder();
                 holder.icon = (ImageView) convertView.findViewById(R.id.icon);
                 holder.name = (TextView) convertView.findViewById(R.id.name);

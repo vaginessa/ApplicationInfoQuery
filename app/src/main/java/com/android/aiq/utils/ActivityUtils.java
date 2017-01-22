@@ -80,7 +80,7 @@ public class ActivityUtils {
         ActivityInfo ai = getActivityInfo(context, packageName, className);
         PackageManager pm = context.getPackageManager();
         if (ai != null) {
-            list.add(new InfoListItem(R.string.name, ai.loadLabel(pm).toString()));
+            list.add(new InfoListItem(R.string.info_name, ai.loadLabel(pm).toString()));
             list.add(new InfoListItem(R.string.package_name, ai.packageName));
             list.add(new InfoListItem(R.string.class_name, ai.name));
             list.add(new InfoListItem(R.string.target_activity, ai.targetActivity));

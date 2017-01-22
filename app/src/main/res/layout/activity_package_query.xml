@@ -16,7 +16,7 @@
         android:text="@string/package_name"/>
 
     <EditText
-        android:id="@+id/package_name_et"
+        android:id="@+id/package_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/activity_vertical_margin"

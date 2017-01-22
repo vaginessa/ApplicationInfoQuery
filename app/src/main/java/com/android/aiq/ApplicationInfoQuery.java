@@ -17,7 +17,6 @@ import android.widget.Button;
 
 import com.android.aiq.activitys.ActivityQueryActivity;
 import com.android.aiq.broadcasts.BroadcastQueryActivity;
-import com.android.aiq.packages.PackageQueryActivity;
 import com.android.aiq.providers.ProviderQueryActivity;
 import com.android.aiq.service.ServiceQueryActivity;
 
@@ -32,24 +31,24 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_application_info_query);
 
         initViews();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             bindShowTopActivityService();
-        }
+        //}
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             unbindService(mConnection);
-        }
+        //}
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return super.onCreateOptionsMenu(menu);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            return super.onCreateOptionsMenu(menu);
+//        }
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_application_info_query, menu);
         mShowTopActivityMenu = menu.findItem(R.id.real_time_display);
@@ -58,9 +57,9 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return super.onPrepareOptionsMenu(menu);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            return super.onPrepareOptionsMenu(menu);
+//        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
@@ -80,9 +79,9 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return super.onMenuItemSelected(featureId, item);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            return super.onMenuItemSelected(featureId, item);
+//        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
@@ -119,7 +118,8 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
                 break;
 
             case R.id.uninstall_application_info:
-
+                Intent ua = new Intent(this, UninstallApplication.class);
+                startActivity(ua);
                 break;
 
             case R.id.package_query:

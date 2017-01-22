@@ -10,6 +10,64 @@
     <string name="service_query">Service Query</string>
     <string name="broadcast_query">Broadcast Query</string>
     <string name="provider_query">Provider Query</string>
+    <string name="query">Query</string>
+    <string name="click_to_view">Click to view</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="info_name">Name</string>
+    <string name="info_version_name">Version Name</string>
+    <string name="info_version_code">Version Code</string>
+    <string name="info_package_name">Package Name</string>
+    <string name="info_shared_user_id">Shared User Id</string>
+    <string name="info_base_revision_code">Base Revision Code</string>
+    <string name="info_first_install_time">First Install Time</string>
+    <string name="info_last_update_time">Last Update Time</string>
+    <string name="info_gids">Gids</string>
+    <string name="info_install_location">Install Location</string>
+    <string name="info_shared_user_label">Shared User Label</string>
+    <string name="info_config_preferences">Config Preferences</string>
+    <string name="info_feature_groups">Feature Groups</string>
+    <string name="info_permissions">Permissions</string>
+    <string name="info_instrumentation">Instrumentation</string>
+    <string name="info_providers">Providers</string>
+    <string name="info_activities">Activities</string>
+    <string name="info_receivers">Receivers</string>
+    <string name="info_applicationInfo">Application Info</string>
+    <string name="info_services">Services</string>
+    <string name="info_requested_permissions">Requested Permission</string>
+    <string name="info_requested_permissions_flags">Requested Permissions Flags</string>
+    <string name="info_signatures">Signatures</string>
+    <string name="info_split_names">Split Names</string>
+    <string name="info_split_revision_codes">Split Revision Codes</string>
+    <string name="info_core_app">Core App</string>
+    <string name="info_required_for_all_users">Required For All Users</string>
+    <string name="info_restricted_account_type">Restricted Account Type</string>
+    <string name="info_required_account_type">Required account type</string>
+    <string name="info_overlay_target">Overlay Target</string>
+
+    <string name="head_gids">"Gids: "</string>
+    <string name="head_split_revision_codes">"Split Revision Code: "</string>
+    <string name="head_split_names">"Split Names: "</string>
+    <string name="head_requested_permissions">"Requested Permissions: "</string>
+    <string name="head_requested_permissions_flags">"Requested Permissions Flags: "</string>
+
+    <string name="head_config_preferences">"ConfigPreferences "<xliff:g id="index">%d</xliff:g>": "</string>
+    <string name="head_gl_es_version">"\tGlEsVersion: "<xliff:g id="name">%s</xliff:g></string>
+    <string name="head_req_gl_es_version">"\tReqGlEsVersion: "<xliff:g id="version">%d</xliff:g></string>
+    <string name="head_req_input_features">"\tReqInputFeatures: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_req_keyboard_type">"\tReqKeyboardType: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_req_navigation">"\tReqKeyboardType: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_req_touch_screen">"\tReqTouchScreen: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_feature_group">"FeatureGroup "<xliff:g id="index">%d</xliff:g>": "</string>
+    <string name="head_feature_info">"\tFeatureInfo "<xliff:g id="index">%d</xliff:g>": "</string>
+    <string name="head_name">"Name: "<xliff:g id="index">%s</xliff:g>": "</string>
+    <string name="head_flags">"Flags: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_version">"Version: "<xliff:g id="value">%d</xliff:g></string>
+    <string name="head_permission">"Permission "<xliff:g id="index">%d</xliff:g>": "</string>
+    <string name="head_description">"Description: "<xliff:g id="value">%s</xliff:g></string>
+    <string name="head_protection_level">"Protection Level: "<xliff:g id="value">%s</xliff:g></string>
+
+    <string name="uninstall">Uninstall</string>
 
     <!--    ApplicationInfoQuery.java Strings       -->
     <string name="show_top_activity">Show Top Activity</string>
@@ -40,10 +98,26 @@
     <!--    ApplicationInfoList.java Strings        -->
     <string name="package_info">Package Info</string>
     <string name="application_info">Application Info</string>
-    <string name="activity_info">Activity Info</string>
-    <string name="service_info">Service Info</string>
-    <string name="broadcast_info">Broadcast Info</string>
-    <string name="provider_info">Provider Info</string>
+    <string name="activity_info">Activities</string>
+    <string name="service_info">Services</string>
+    <string name="broadcast_info">Broadcasts</string>
+    <string name="provider_info">Providers</string>
+    <string name="install_application">Install Application</string>
+
+    <!--    UninstallApplication.java Strings       -->
+    <string name="select_apk_file">Select Apk File</string>
+    <string name="no_files_selected">No files selected</string>
+    <string name="invalid_file">Invalid file</string>
+
+    <!--    PackageQueryActivity.java Strings   -->
+    <string name="package_name">Package Name</string>
+    <string name="not_find_package">"The package named "<xliff:g id="package_name">%s</xliff:g>" was not found"</string>
+
+    <!--    PackageInfoActivity.java Strings        -->
+    <string name="no_package_info">No PackageInfo Infomation</string>
+    <string name="package_info_title"><xliff:g id="name">%s</xliff:g>" PackageInfo"</string>
+    <string name="user_mode">User Mode</string>
+    <string name="developer_mode">Developer Mode</string>
 
     <string name="package_list_empty_text">"没有找到应用"</string>
     <string name="all_application_title">"所有应用"</string>
@@ -59,13 +133,11 @@
     <string name="service_info_title">"Services信息"</string>
     <string name="broadcast_info_title">"Broadcasts信息"</string>
     <string name="provider_info_title">"Providers信息"</string>
-    <string name="package_info_title"><xliff:g id="title">%s</xliff:g>"应用信息"</string>
     <string name="application_info_activity_title"><xliff:g id="title">%s</xliff:g>"应用信息"</string>
     <string name="no_application_info_empty_text">"无法获取应用信息"</string>
     <string name="application_name">"应用名称"</string>
     <string name="version">"版本号"</string>
     <string name="shared_user_id">"共享用户ID"</string>
-    <string name="package_name">"包名"</string>
     <string name="launcer_activity">"启动活动"</string>
     <string name="first_install_time">"首次安装时间"</string>
     <string name="last_update_time">"上次更新时间"</string>
@@ -108,7 +180,6 @@
     <string name="provider_list_empty_text">"没有找到内容提供器"</string>
     <string name="no_activity_info_empty_text">"没有活动信息"</string>
     <string name="activity_info_activity_title"><xliff:g id="title">%s</xliff:g>"活动信息"</string>
-    <string name="name">"名称"</string>
     <string name="class_name">"类名"</string>
     <string name="target_activity">"目标活动"</string>
     <string name="parent_activity_name">"父活动"</string>
@@ -145,7 +216,6 @@
     <string name="path_permissions">Path permissions</string>
     <string name="uri_permission_patterns">Uri permission patterns</string>
     <string name="is_syncable">Is Syncable</string>
-    <string name="query">Query</string>
     <string name="non_find_app">"An application with the package "<xliff:g id="package">%s</xliff:g>" is not found"</string>
     <string name="action">Action</string>
     <string name="category">Category</string>

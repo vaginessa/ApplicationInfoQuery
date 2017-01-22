@@ -1,6 +1,5 @@
 package com.android.aiq.utils;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -81,7 +80,7 @@ public class ServiceUtils {
         PackageManager pm = context.getPackageManager();
         ServiceInfo si = getServiceInfo(context, packageName, className);
         if (si != null) {
-            list.add(new InfoListItem(R.string.name, si.loadLabel(pm).toString()));
+            list.add(new InfoListItem(R.string.info_name, si.loadLabel(pm).toString()));
             list.add(new InfoListItem(R.string.package_name, si.packageName));
             list.add(new InfoListItem(R.string.process_name, si.processName));
             list.add(new InfoListItem(R.string.logo_resource, si.getLogoResource() + ""));

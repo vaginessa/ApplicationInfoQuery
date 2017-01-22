@@ -1,5 +1,6 @@
 package com.android.aiq;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.Service;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -101,7 +103,7 @@ public class ShowTopActivityService extends Service {
             mWindowManager.addView(mInfoTv, mLayoutParams);
             startForeground();
             mIsShowing = true;
-            mHandler.sendEmptyMessageDelayed(MSG_REFRESH,mRefreshTime * 1000);
+            mHandler.sendEmptyMessageDelayed(MSG_REFRESH, mRefreshTime * 1000);
         }
     }
 
@@ -146,8 +148,10 @@ public class ShowTopActivityService extends Service {
         return info.toString();
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     private ComponentName getTopActivityComponentName() {
-        return mActivityManager.getRunningTasks(1).get(0).topActivity;
+        return mActivityManager.getAppTasks().get(0).getTaskInfo().topActivity;
+        //return mActivityManager.getRunningTasks(1).get(0).topActivity;
     }
 
     private ApplicationInfo getTopActivityApplicationInfo(String packageName) {
