@@ -5,10 +5,6 @@
         android:title="@string/start_application"
         android:showAsAction="never" />
 
-    <item android:id="@+id/install_application"
-        android:title="@string/disabled_application"
-        android:showAsAction="never" />
-
     <item android:id="@+id/uninstall_application"
         android:title="@string/uninstall_application"
         android:showAsAction="never" />

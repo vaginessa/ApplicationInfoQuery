@@ -27,10 +27,9 @@ import java.util.ArrayList;
  * （１）通过启动Intent中附带的Utils.EXTRA_TYPE值，获取所有应用（Utils.TYPE_ALL_APPLICATION）、系统应用（Utils.TYPE_SYSTEM_APPLICATION）、非系统应用（Utils.TYPE_NON_SYSTEM_APPLICATION）
  * （２）由于获取应用时可能需要稍长时间，因此使用一个异步线程（LoadAsyncTask）来获取应用列表
  * （３）在获取应用列表成功前显示一个圆形进度对话框，提示用户正在加载应用列表，避免界面长时间没有变化，造成应用无反应或没有获取到应用的错觉。
- * （４）添加ListView上下文菜单，增加启动应用、禁用或启用应用（由于需要系统权限，因此该菜单会一直处于不可用状态）、卸载应用、拷贝apk
- * （５）由于用户可能想直接启动应用，因此在列表条目的右边添加一个启动应用的按钮，方便用户快速启动应用。
+ * （４）由于用户可能想直接启动应用，因此在列表条目的右边添加一个启动应用的按钮，方便用户快速启动应用。
  */
-public class ApplicationListActivity extends ListActivity implements AdapterView.OnItemClickListener {
+public class ApkListActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
     private TextView mEmptyView;
     private Dialog mLoadDialog;
@@ -84,7 +83,6 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_application_list, menu);
         MenuItem start = menu.findItem(R.id.start_application);
-        MenuItem enabledOrDisabled = menu.findItem(R.id.disabled_or_enabled_application);
         MenuItem uninstall = menu.findItem(R.id.uninstall_application);
         if (!item.hasLauncherActivity) {
             start.setEnabled(false);
@@ -92,17 +90,6 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
         if (item.isSystemApp) {
             uninstall.setEnabled(false);
         }
-
-        //因为禁用和启用应用功能需要系统权限，所以默认禁用该功能并隐藏该菜单项
-        /*
-        if (Utils.isApplicationEnabled(this, item.packageName)) {
-            enabledOrDisabled.setTitle(R.string.disabled_application);
-        } else {
-            enabledOrDisabled.setTitle(R.string.enabled_application);
-        }
-        */
-        enabledOrDisabled.setVisible(false);
-        enabledOrDisabled.setEnabled(false);
     }
 
     @Override
@@ -112,10 +99,6 @@ public class ApplicationListActivity extends ListActivity implements AdapterView
         switch (item.getItemId()) {
             case R.id.start_application:
                 Utils.startActivity(this, li.packageName, li.launcherActivity);
-                return true;
-
-            case R.id.disabled_or_enabled_application:
-                Utils.setApplicationEnabled(this, li.packageName, !Utils.isApplicationEnabled(this, li.packageName));
                 return true;
 
             case R.id.uninstall_application:

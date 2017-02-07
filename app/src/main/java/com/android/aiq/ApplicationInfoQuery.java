@@ -15,11 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.aiq.activitys.ActivityQueryActivity;
-import com.android.aiq.broadcasts.BroadcastQueryActivity;
-import com.android.aiq.providers.ProviderQueryActivity;
-import com.android.aiq.service.ServiceQueryActivity;
-
 public class ApplicationInfoQuery extends Activity implements View.OnClickListener {
 
     private MenuItem mShowTopActivityMenu;
@@ -31,24 +26,24 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_application_info_query);
 
         initViews();
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             bindShowTopActivityService();
-        //}
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             unbindService(mConnection);
-        //}
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            return super.onCreateOptionsMenu(menu);
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onCreateOptionsMenu(menu);
+        }
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_application_info_query, menu);
         mShowTopActivityMenu = menu.findItem(R.id.real_time_display);
@@ -57,9 +52,9 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            return super.onPrepareOptionsMenu(menu);
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onPrepareOptionsMenu(menu);
+        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
@@ -79,9 +74,9 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            return super.onMenuItemSelected(featureId, item);
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return super.onMenuItemSelected(featureId, item);
+        }
         if (mService != null) {
             try {
                 if (mService.isShowing()) {
@@ -100,19 +95,19 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.all_application_info:
-                Intent all = new Intent(this, ApplicationListActivity.class);
+                Intent all = new Intent(this, ApkListActivity.class);
                 all.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_ALL_APPLICATION);
                 startActivity(all);
                 break;
 
             case R.id.system_application_info:
-                Intent system = new Intent(this, ApplicationListActivity.class);
+                Intent system = new Intent(this, ApkListActivity.class);
                 system.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_SYSTEM_APPLICATION);
                 startActivity(system);
                 break;
 
             case R.id.non_system_application_info:
-                Intent nonsystem = new Intent(this, ApplicationListActivity.class);
+                Intent nonsystem = new Intent(this, ApkListActivity.class);
                 nonsystem.putExtra(Utils.EXTRA_TYPE, Utils.TYPE_NON_SYSTEM_APPLICATION);
                 startActivity(nonsystem);
                 break;
@@ -128,23 +123,23 @@ public class ApplicationInfoQuery extends Activity implements View.OnClickListen
                 break;
 
             case R.id.activity_query:
-                Intent activityQuery = new Intent(this, ActivityQueryActivity.class);
-                startActivity(activityQuery);
+//                Intent activityQuery = new Intent(this, ActivityQueryActivity.class);
+//                startActivityvity(activityQuery);
                 break;
 
             case R.id.service_query:
-                Intent serviceQuery = new Intent(this, ServiceQueryActivity.class);
-                startActivity(serviceQuery);
+//                Intent serviceQuery = new Intent(this, ServiceQueryActivity.class);
+//                startActivity(serviceQuery);
                 break;
 
             case R.id.broadcast_query:
-                Intent broadcastQuery = new Intent(this, BroadcastQueryActivity.class);
-                startActivity(broadcastQuery);
+//                Intent broadcastQuery = new Intent(this, BroadcastQueryActivity.class);
+//                startActivity(broadcastQuery);
                 break;
 
             case R.id.provider_query:
-                Intent providerQuery = new Intent(this, ProviderQueryActivity.class);
-                startActivity(providerQuery);
+//                Intent providerQuery = new Intent(this, ProviderQueryActivity.class);
+//                startActivity(providerQuery);
                 break;
         }
     }

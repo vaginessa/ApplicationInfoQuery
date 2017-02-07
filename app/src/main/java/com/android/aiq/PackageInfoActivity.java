@@ -29,7 +29,6 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
     private ArrayList<InfoItem> mList;
     private PackageInfo mPackageInfo;
 
-    private int mMode;
     private String mPackageName;
     private String mApkPath;
 
@@ -43,37 +42,11 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_info_list, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if (mMode == Utils.USER_MODE) {
-            menu.findItem(R.id.mode).setTitle(getString(R.string.developer_mode));
-        } else if (mMode == Utils.DEVELOPER_MODE) {
-            menu.findItem(R.id.mode).setTitle(getString(R.string.user_mode));
-        }
-        return true;
-    }
-
-    @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
-
-            case R.id.mode:
-                if (mMode == Utils.USER_MODE) {
-                    mMode = Utils.DEVELOPER_MODE;
-                } else if (mMode == Utils.DEVELOPER_MODE) {
-                    mMode = Utils.USER_MODE;
-                }
-                updateViews(mMode);
-                break;
         }
         return super.onMenuItemSelected(featureId, item);
     }
@@ -93,14 +66,13 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
 
         if (mPackageInfo != null) {
             getActionBar().setTitle(getString(R.string.package_info_title, Utils.getApplicationLabel(this, mPackageInfo)));
-            updateViews(mMode);
+            updateViews();
         } else {
             finish();
         }
     }
 
     private void initValues() {
-        mMode = Utils.USER_MODE;
         mPackageName = null;
         mApkPath = null;
         mPackageInfo = null;
@@ -114,7 +86,7 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
         getListView().setOnItemClickListener(this);
     }
 
-    private void updateViews(int mode) {
+    private void updateViews() {
         mList = new ArrayList<InfoItem>();
         mAdapter = new PackageInfoAdapter(this, mList);
         getListView().setAdapter(mAdapter);
@@ -124,23 +96,14 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
             }
             mLoadTask = null;
         }
-        mLoadTask = new LoadAsyncTask(this, mPackageInfo, mode);
+        mLoadTask = new LoadAsyncTask(this, mPackageInfo);
         mLoadTask.execute(new Void[]{});
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         InfoItem item = mAdapter.getItem(position);
-        if (item.action != Utils.ACTION_NONE) {
-            if (item.action == Utils.ACTION_ACTIVITY) {
-                Utils.startActivityByAction(this, item.type, mPackageName, mApkPath, mMode);
-            } else if (item.action == Utils.ACTION_DIALOG) {
-                Dialog dialog = Utils.createInfoDialog(this, item.type, mPackageName, mApkPath, mMode);
-                if (dialog != null) {
-                    dialog.show();
-                }
-            }
-        }
+
     }
 
     /**
@@ -150,12 +113,10 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
 
         private Context mContext;
         private PackageInfo mPackageInfo;
-        private int mMode;
 
-        public LoadAsyncTask(Context context, PackageInfo info, int mode) {
+        public LoadAsyncTask(Context context, PackageInfo info) {
             mContext = context;
             mPackageInfo = info;
-            mMode = mode;
         }
 
         @Override
@@ -173,7 +134,7 @@ public class PackageInfoActivity extends ListActivity implements AdapterView.OnI
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            mList = Utils.getPackageInfoList(mContext, mPackageInfo, mMode);
+            mList = Utils.getPackageInfoList(mContext, mPackageInfo);
             return true;
         }
 
